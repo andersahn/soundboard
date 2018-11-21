@@ -5,8 +5,18 @@
         "id": "hunters-mark.mp3"
     },
     {
+        "name": "arrow-woosh.mp3",
+        "path": "sounds\/.\/arrow-woosh.mp3",
+        "id": "arrow-woosh.mp3"
+    },
+    {
         "name": "Ayayayayayayayay!.mp3",
         "path": "sounds\/.\/Ayayayayayayayay!.mp3",
         "id": "Ayayayayayayayay!.mp3"
+    },
+    {
+        "name": "knife-stab.mp3",
+        "path": "sounds\/.\/knife-stab.mp3",
+        "id": "knife-stab.mp3"
     }
 ]

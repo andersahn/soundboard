@@ -1,8 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
 
-use wapmorgan\Mp3Info\Mp3Info;
-
 $path =  __DIR__ . '/sounds';
 /** @var RecursiveDirectoryIterator $iterator */
 $iterator = new RecursiveIteratorIterator(
@@ -21,12 +19,17 @@ foreach ($iterator as $item) {
     $subPath = $iterator->getSubPathname();
     if ($item->isDir()) {
         // Create a new array key of the current directory name.
-        $array[$subPath] = array();
+        $array[$subPath] = [];
     } else {
         // Add a new element to the array of the current file name.
+
+        $realPath = $item->getRealPath();
+        //$audio = new Mp3Info($item->getRealPath());
+
         $array[$subPath]['file'] = "./$subPath";
-        $array[$subPath]['name'] = $item->getBasename();
-        $array[$subPath]['id'] = $item->getBasename(); //@todo id
+        $baseName = basename($realPath);
+        $array[$subPath]['name'] = $baseName;
+        $array[$subPath]['id'] = $baseName; //@todo id
     }
 }
 
