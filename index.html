@@ -3,8 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Soundboard</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/button.css">
 </head>
 <body>
 <h1>Hello world</h1>
+<span class="track">
+	<audio
+			id="ayay"
+			src="./sounds/Ayayayayayayayay!.mp3" preload="none"
+				 onplay="console.log('hey');document.getElementById('button-ayay').classList.add('playing');"
+				 onended="document.getElementById('button-ayay').classList.remove('playing');">
+
+	</audio>
+	<button id="button-ayay" onclick="play('ayay');" class="button-play">Ayayayayayayayay!</button></span>
 </body>
+
+<script>
+	function play(id) {
+		var audio = document.getElementById(id);
+		if (audio.paused) {
+			audio.play();
+		}else{
+			audio.pause();
+			audio.currentTime = 0
+		}
+	}
+</script>
 </html>
