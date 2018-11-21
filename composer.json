@@ -1,0 +1,18 @@
+{
+    "name": "andersahn/soundboard",
+    "description": "Soundboard using HTML",
+    "type": "project",
+    "license": "GNU General Public License v3.0",
+    "authors": [
+        {
+            "name": "Anders Hedegaard Nielsen",
+            "email": "ahn@konform.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "wapmorgan/mp3info": "^0.0.3"
+    },
+    "require-dev": {
+    }
+}
