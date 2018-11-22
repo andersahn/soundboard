@@ -5,9 +5,19 @@
         "id": "Ayayayayayayayay!.mp3"
     },
     {
+        "name": "Purple-bubble-pipe.mp3",
+        "path": "sounds\/.\/Purple-bubble-pipe.mp3",
+        "id": "Purple-bubble-pipe.mp3"
+    },
+    {
         "name": "arrow-woosh.mp3",
         "path": "sounds\/.\/arrow-woosh.mp3",
         "id": "arrow-woosh.mp3"
+    },
+    {
+        "name": "cougar-snarl.mp3",
+        "path": "sounds\/.\/cougar-snarl.mp3",
+        "id": "cougar-snarl.mp3"
     },
     {
         "name": "dramatic-chipmunk.mp3",
