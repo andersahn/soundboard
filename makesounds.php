@@ -30,6 +30,7 @@ foreach ($iterator as $item) {
         $baseName = basename($realPath);
         $array[$subPath]['name'] = $baseName;
         $array[$subPath]['id'] = $baseName; //@todo id
+        //@TODO add duration for button progress
     }
 }
 

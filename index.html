@@ -4,99 +4,30 @@
 	<meta charset="UTF-8">
 	<title>Soundboard</title>
 	<link rel="stylesheet" type="text/css" href="frontend/css/button.css">
+	<script src="frontend/js/soundboard.js"></script>
 </head>
 <body>
 <h1>Soundboard</h1>
+
 <div id="audio-container">
 
 </div>
 
-<!-- a template of sorts @TODO use this instead to copy -->
-<span class="track" style="display:none;">
-	<audio
-			id="ayay"
-			src="./sounds/Ayayayayayayayay!.mp3" preload="none"
-			onplay="document.getElementById('button-ayay').classList.add('playing');"
-			onended="document.getElementById('button-ayay').classList.remove('playing');">
-
-	</audio>
-	<button id="button-ayay" onclick="play('ayay');" class="button-play">Ayayayayayayayay!</button>
-</span>
+<!-- a template for the audio buttons-->
+<div style="display:none;">
+	<span id="template" class="track">
+		<audio
+				id="x"
+				src="./sounds/Ayayayayayayayay!.mp3"
+				preload="none">
+		</audio>
+		<button id="button-x" onclick="play('x');" class="button-play">xname</button>
+	</span>
+</div>
 
 </body>
 
 <script>
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', 'sounds.json');
-	xhr.send(null);
 
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === 4) {
-			console.log(xhr.status);
-			if (xhr.status === 200) {
-				var obj = JSON.parse(xhr.responseText);
-				console.log(obj.length);
-				for (i=0; i < obj.length; i++) {
-					insertAudioElement(obj[i]);
-				}
-
-
-			} else {
-				console.log('Error: ' + xhr.status);
-			}
-		}
-	};
-
-	function insertAudioElement(object)
-	{
-		var div = document.getElementById('audio-container');
-		var el = document.createElement('div');
-
-		console.log(object.name);
-		el.classList.add('track');
-		el.innerHTML = "<audio\n" +
-				"\t\t\tid=\"" +
-				object.id +
-				"\"\n" +
-				"\t\t\tsrc=\"" +
-				object.path +
-				"\" preload=\"none\"\n" +
-				"\t\t\tonplay=\"document.getElementById('button-" +
-				object.id +
-				"').classList.add('playing');\"\n" +
-				"\t\t\tonended=\"document.getElementById('button-" +
-				object.id +
-				"').classList.remove('playing');\">\n" +
-				"\n" +
-				"\t</audio>\n" +
-				"\t<button id=\"button-" +
-				object.id +
-				"\" onclick=\"play('" +
-				object.id +
-				"');\" class=\"button-play\">" +
-				object.name +
-				"</button>\n";
-
-		div.appendChild(el);
-		document.body.appendChild(el);
-//		insertAfter(div, el);
-
-
-	}
-
-	//function insertAfter(newNode, referenceNode) {
-	//	console.log(referenceNode.parentNode);
-	//	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-	//}
-
-	function play(id) {
-		var audio = document.getElementById(id);
-		if (audio.paused) {
-			audio.play();
-		}else{
-			audio.pause();
-			audio.currentTime = 0
-		}
-	}
 </script>
 </html>
