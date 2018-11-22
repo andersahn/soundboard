@@ -13,9 +13,9 @@
 	  "sizes": "512x512"
 	}
   ],
-  "start_url": "/",
+  "start_url": "/soundboard/",
   "background_color": "#e84427",
   "display": "standalone",
-  "scope": "/",
+  "scope": "/soundboard/",
   "theme_color": "#e84427"
 }
