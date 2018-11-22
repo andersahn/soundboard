@@ -10,6 +10,11 @@
         "id": "arrow-woosh.mp3"
     },
     {
+        "name": "dramatic-chipmunk.mp3",
+        "path": "sounds\/.\/dramatic-chipmunk.mp3",
+        "id": "dramatic-chipmunk.mp3"
+    },
+    {
         "name": "Ayayayayayayayay!.mp3",
         "path": "sounds\/.\/Ayayayayayayayay!.mp3",
         "id": "Ayayayayayayayay!.mp3"
