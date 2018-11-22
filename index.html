@@ -12,20 +12,30 @@
 </div>
 
 <!-- a template of sorts @TODO use this instead to copy -->
-<span class="track" style="display:none;">
-	<audio
-			id="ayay"
-			src="./sounds/Ayayayayayayayay!.mp3" preload="none"
-			onplay="document.getElementById('button-ayay').classList.add('playing');"
-			onended="document.getElementById('button-ayay').classList.remove('playing');">
-
-	</audio>
-	<button id="button-ayay" onclick="play('ayay');" class="button-play">Ayayayayayayayay!</button>
-</span>
+<div style="display:none;">
+	<span id="template" class="track">
+		<audio
+				id="audio"
+				src="./sounds/Ayayayayayayayay!.mp3" preload="none">
+		</audio>
+		<button id="button-x" onclick="play('ayay');" class="button-play">Ayayayayayayayay!</button>
+	</span>
+</div>
 
 </body>
 
 <script>
+	// attach audio listeners
+	var aud = document.getElementById("audio");
+	aud.onended = function() {
+
+	};
+
+	function endPlay()
+	{
+		document.getElementById('hmm').classList.remove('playing');
+	}
+
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', 'sounds.json');
 	xhr.send(null);
@@ -47,10 +57,37 @@
 		}
 	};
 
+
+
 	function insertAudioElement(object)
 	{
+		var div = document.getElementById('template');
+		var clone = div.cloneNode(true); // true means clone all childNodes and all event handlers
+
+		// play button
+		var button = clone.getElementsByTagName('button')[0];
+		button.id = object.id;
+		button.setAttribute('onclick', play('ayay')); //@TODO from here
+
+		//audio element
+		var audioElement = clone.getElementsByTagName('audio')[0];
+
+		audioElement.setAttribute('onplay', "document.getElementById('button-xyz').classList.add('playing');");
+		audioElement.setAttribute('onended', "document.getElementById('button-xyz').classList.remove('playing');");
+		//clone.id = object.id;
+
+		// add the template clone to html
+		//document.body.appendChild(clone);
 		var div = document.getElementById('audio-container');
+		div.appendChild(clone);
+
+
+		return;
+		var test = document.getElementById('template');
+		console.log(test);
+
 		var el = document.createElement('div');
+
 
 		console.log(object.name);
 		el.classList.add('track');
@@ -78,7 +115,7 @@
 				"</button>\n";
 
 		div.appendChild(el);
-		document.body.appendChild(el);
+		//document.body.appendChild(el);
 //		insertAfter(div, el);
 
 
