@@ -40,6 +40,13 @@ foreach ($array as $item) {
     $sounds[] = ['name' => $item['name'], 'path' => "sounds/{$item['file']}", 'id' => $item['id']];
 }
 
+usort(
+    $sounds,
+    function (array $a, array $b) {
+        return strcmp($a['name'], $b['name']);
+    }
+);
+
 
 $soundsJson = json_encode($sounds);
 

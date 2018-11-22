@@ -1,8 +1,8 @@
 [
     {
-        "name": "hunters-mark.mp3",
-        "path": "sounds\/.\/hunters-mark.mp3",
-        "id": "hunters-mark.mp3"
+        "name": "Ayayayayayayayay!.mp3",
+        "path": "sounds\/.\/Ayayayayayayayay!.mp3",
+        "id": "Ayayayayayayayay!.mp3"
     },
     {
         "name": "arrow-woosh.mp3",
@@ -15,13 +15,18 @@
         "id": "dramatic-chipmunk.mp3"
     },
     {
-        "name": "Ayayayayayayayay!.mp3",
-        "path": "sounds\/.\/Ayayayayayayayay!.mp3",
-        "id": "Ayayayayayayayay!.mp3"
+        "name": "hunters-mark.mp3",
+        "path": "sounds\/.\/hunters-mark.mp3",
+        "id": "hunters-mark.mp3"
     },
     {
         "name": "knife-stab.mp3",
         "path": "sounds\/.\/knife-stab.mp3",
         "id": "knife-stab.mp3"
+    },
+    {
+        "name": "wilhelm.mp3",
+        "path": "sounds\/.\/wilhelm.mp3",
+        "id": "wilhelm.mp3"
     }
 ]
