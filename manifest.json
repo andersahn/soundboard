@@ -1,0 +1,21 @@
+{
+  "short_name": "Soundboard DND",
+  "name": "Soundboard DNDND",
+  "icons": [
+	{
+	  "src": "images/trumpet-flag-192.png",
+	  "type": "image/png",
+	  "sizes": "192x192"
+	},
+	{
+	  "src": "images/trumpet-flag-512.png",
+	  "type": "image/png",
+	  "sizes": "512x512"
+	}
+  ],
+  "start_url": "/soundboard/",
+  "background_color": "#e84427",
+  "display": "standalone",
+  "scope": "/soundboard/",
+  "theme_color": "#e84427"
+}
