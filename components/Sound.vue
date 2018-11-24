@@ -89,6 +89,8 @@ export default {
   color: #606266;
   border-radius: 3px;
 
+  user-select: none;
+
   transition-property: color, border-color, background-color;
   transition-duration: 120ms;
   transition-timing-function: ease-in;
