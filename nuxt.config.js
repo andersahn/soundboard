@@ -26,11 +26,11 @@ module.exports = {
     link: [
       {
         rel: 'icon', type: 'image/x-icon',
-        href: `${process.env.baseUrl}/favicon.ico`
+        href: `${baseUrl}/favicon.ico`
       },
       {
         rel: 'manifest',
-        href: `${process.env.baseUrl}manifest.json`,
+        href: `${baseUrl}manifest.json`,
       },
     ]
   },
