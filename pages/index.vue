@@ -11,7 +11,7 @@ export default {
     Sound,
   },
   head: {
-    title: 'Soundboard'
+    title: 'Soundboard',
   },
   computed: {
     sounds() {

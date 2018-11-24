@@ -24,7 +24,14 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {
+        rel: 'icon', type: 'image/x-icon',
+        href: `${process.env.baseUrl}/favicon.ico`
+      },
+      {
+        rel: 'manifest',
+        href: `${process.env.baseUrl}manifest.json`,
+      },
     ]
   },
 
