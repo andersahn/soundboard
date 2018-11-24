@@ -26,7 +26,7 @@ module.exports = {
     link: [
       {
         rel: 'icon', type: 'image/x-icon',
-        href: `${baseUrl}/favicon.ico`
+        href: `${baseUrl}favicon.ico`
       },
       {
         rel: 'manifest',

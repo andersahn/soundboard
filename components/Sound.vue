@@ -1,9 +1,25 @@
 <template>
   <div :class="{ 'sound': true, 'sound--playing': isPlaying }" v-on:click="play" >
-    <audio :src="soundUrl" ref="audio" v-on:play="setPlaying" v-on:pause="setPaused" />
+    <audio
+      :src="soundUrl"
+      ref="audio"
+      v-on:play="setPlaying"
+      v-on:pause="setPaused"
+      v-on:ended="resetTime"
+      v-on:timeupdate="setTime"
+      v-on:loadedmetadata="setDuration"
+    />
     {{sound.name}}
     <div v-if="isPlaying" class="sound__icon sound__icon--left">🎶</div>
     <div v-if="isPlaying" class="sound__icon sound__icon--right">🎶</div>
+    <div class="sound__progress">
+      <div
+        class="sound__progress__indicator"
+        :style="{
+          width: `${percentagePlayed}%`,
+        }"
+      ></div>
+    </div>
   </div>
 </template>
 
@@ -15,11 +31,20 @@ export default {
   data: function() {
     return {
       isPlaying: false,
+      time: 0,
+      duration: false,
     };
   },
   computed: {
     soundUrl() {
       return `${process.env.baseUrl}sounds/${this.sound.filename}`;
+    },
+    percentagePlayed() {
+      if (!this.duration) {
+        return;
+      }
+
+      return 100 / this.duration * this.time;
     },
   },
   methods: {
@@ -37,6 +62,15 @@ export default {
     },
     setPaused() {
       this.isPlaying = false;
+    },
+    setDuration(e) {
+      this.duration = e.srcElement.duration;
+    },
+    setTime(e) {
+      this.time = e.srcElement.currentTime;
+    },
+    resetTime(e) {
+      this.time = 0;
     },
   },
 }
@@ -84,6 +118,27 @@ export default {
     &--right {
       right: 0;
       transform: translate3d(50%, -30%, 0);
+    }
+  }
+
+  &__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    &__indicator {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 0;
+
+      background-color: currentColor;
+      will-change: width;
     }
   }
 }
