@@ -8,7 +8,6 @@
       v-on:ended="resetTime"
       v-on:timeupdate="setTime"
       v-on:loadedmetadata="setDuration"
-      autoplay
     />
     <div class="sound__name">
       {{sound.name}}
@@ -57,22 +56,23 @@ export default {
   },
   methods: {
     load() {
-      console.log('load', this.sound.filename);
       if (!this.loadAudio) {
+        // console.log('load', this.sound.filename);
         this.loadAudio = true;
       }
     },
     play() {
       this.load();
-      const isPaused = this.$refs.audio.paused;
-      if (this.$refs.audio.buffered.length) {
+
+      setTimeout(() => {
+        const isPaused = this.$refs.audio.paused;
         if (isPaused) {
           this.$refs.audio.play();
         } else {
           this.$refs.audio.pause();
           this.$refs.audio.currentTime = 0;
         }
-      }
+      }, 0);
     },
     setPlaying() {
       this.isPlaying = true;
