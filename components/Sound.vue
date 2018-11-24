@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'sound': true, 'sound--playing': isPlaying }" v-on:click="play" >
+  <div :class="{ 'sound': true, 'sound--playing': isPlaying }" v-on:click="play" v-on:mouseover.once="load">
     <audio
       :src="soundUrl"
       ref="audio"
@@ -8,8 +8,11 @@
       v-on:ended="resetTime"
       v-on:timeupdate="setTime"
       v-on:loadedmetadata="setDuration"
+      autoplay
     />
-    {{sound.name}}
+    <div class="sound__name">
+      {{sound.name}}
+    </div>
     <div v-if="isPlaying" class="sound__icon sound__icon--left">🎶</div>
     <div v-if="isPlaying" class="sound__icon sound__icon--right">🎶</div>
     <div class="sound__progress">
@@ -30,6 +33,7 @@ export default {
   },
   data: function() {
     return {
+      loadAudio: false,
       isPlaying: false,
       time: 0,
       duration: false,
@@ -37,6 +41,10 @@ export default {
   },
   computed: {
     soundUrl() {
+      if (!this.loadAudio) {
+        return false;
+      }
+
       return `${process.env.baseUrl}sounds/${this.sound.filename}`;
     },
     percentagePlayed() {
@@ -48,13 +56,22 @@ export default {
     },
   },
   methods: {
+    load() {
+      console.log('load', this.sound.filename);
+      if (!this.loadAudio) {
+        this.loadAudio = true;
+      }
+    },
     play() {
+      this.load();
       const isPaused = this.$refs.audio.paused;
-      if (isPaused) {
-        this.$refs.audio.play();
-      } else {
-        this.$refs.audio.pause();
-        this.$refs.audio.currentTime = 0;
+      if (this.$refs.audio.buffered.length) {
+        if (isPaused) {
+          this.$refs.audio.play();
+        } else {
+          this.$refs.audio.pause();
+          this.$refs.audio.currentTime = 0;
+        }
       }
     },
     setPlaying() {
@@ -89,8 +106,6 @@ export default {
   color: #606266;
   border-radius: 3px;
 
-  user-select: none;
-
   transition-property: color, border-color, background-color;
   transition-duration: 120ms;
   transition-timing-function: ease-in;
@@ -121,6 +136,10 @@ export default {
       right: 0;
       transform: translate3d(50%, -30%, 0);
     }
+  }
+
+  &__name {
+    user-select: none;
   }
 
   &__progress {
