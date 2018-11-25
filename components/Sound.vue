@@ -10,7 +10,7 @@
       v-on:loadedmetadata="setDuration"
     />
     <div class="sound__name">
-      {{sound.name}}
+      {{name}}
     </div>
     <div v-if="isPlaying" class="sound__icon sound__icon--left">🎶</div>
     <div v-if="isPlaying" class="sound__icon sound__icon--right">🎶</div>
@@ -30,7 +30,7 @@ export default {
   props: {
     sound: Object,
   },
-  data: function() {
+  data() {
     return {
       loadAudio: false,
       isPlaying: false,
@@ -52,6 +52,9 @@ export default {
       }
 
       return 100 / this.duration * this.time;
+    },
+    name() {
+      return this.sound.meta.name || this.sound.name;
     },
   },
   methods: {
@@ -93,24 +96,28 @@ export default {
 }
 </script>
 
-
 <style lang="scss">
 .sound {
   position: relative;
   display: block;
-  padding: 5px 10px;
-  margin: 0 5px 5px;
+  padding: 8px 12px;
+  margin: 0 4px 8px;
   background: #fff;
   border: 1px solid #dcdfe6;
   border-color: #dcdfe6;
-  color: #606266;
   border-radius: 3px;
+  color: #606266;
+  font-weight: 500;
 
   transition-property: color, border-color, background-color;
   transition-duration: 120ms;
   transition-timing-function: ease-in;
 
   cursor: pointer;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
 
   &:hover {
     color: #409eff;
@@ -157,6 +164,7 @@ export default {
       left: 0;
 
       width: 0;
+      border-radius: 0 0 3px 3px;
 
       background-color: currentColor;
       will-change: width;
