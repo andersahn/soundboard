@@ -27,7 +27,6 @@
 </template>
 
 <script>
-// import { nuxt-link } from 'nuxt';
 import Sound from '../components/Sound';
 export default {
   components: {
@@ -124,6 +123,39 @@ export default {
       border-color: #c6ffe4;
       background-color: #ecfff7;
     }
+  }
+}
+
+.appear-active,
+.page-active,
+.container {
+  transition: opacity .25s;
+
+  .sound {
+    transition: opacity .25s;
+  }
+}
+
+.appear {
+  opacity: 0;
+}
+
+.appear-enter,
+.appear-leave,
+.appear-leave-to,
+.page-enter-to {
+  opacity: 1;
+
+  .sound {
+    opacity: 1;
+  }
+}
+
+.page-leave-to {
+  opacity: 1;
+
+  .sound {
+    opacity: 0;
   }
 }
 </style>

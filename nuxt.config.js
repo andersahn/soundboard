@@ -41,6 +41,14 @@ module.exports = {
       { rel: 'mask-icon', type: 'image/png', href: `${baseUrl}images/safari-pinned-tab.svg`, color: '#000000' },
     ]
   },
+  transition: {
+    name: 'page',
+    mode: 'out-in',
+    appear: true,
+  },
+  render: {
+    ssr: false,
+  },
 
   /*
   ** Customize the progress-bar color
