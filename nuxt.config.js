@@ -1,11 +1,13 @@
 const pkg = require('./package')
 
 let appName = 'Soundboard'
-let router = {}
+let router = {
+  mode: 'hash',
+};
 let baseUrl = '/';
 if (process.env.DEPLOY_ENV === 'GH_PAGES') {
   baseUrl = '/soundboard/';
-  router = { base: baseUrl };
+  router = { ...router, base: baseUrl };
 }
 
 module.exports = {

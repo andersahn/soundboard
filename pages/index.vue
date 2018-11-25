@@ -1,32 +1,33 @@
 <template>
   <section class="container">
     <div class="categories">
-      <button
+      <nuxt-link
+        to="/"
         :class="{
           'categories__category': true,
-          'categories__category--selected': (filterCategory === false),
+          'categories__category--selected': (viewCategory === false),
         }"
-        v-on:click="() => setCategory(false)"
       >
         None
-      </button>
-      <button
+      </nuxt-link>
+      <nuxt-link
         v-for="category in categories"
         v-bind:key="category"
+        :to="`/${category}`"
         :class="{
           'categories__category': true,
-          'categories__category--selected': (filterCategory === category),
+          'categories__category--selected': (viewCategory === category),
         }"
-        v-on:click="() => setCategory(category)"
       >
         {{category}}
-      </button>
+      </nuxt-link>
     </div>
     <Sound v-for="sound in filteredSounds" v-bind:key="sound.name" :sound="sound" />
   </section>
 </template>
 
 <script>
+// import { nuxt-link } from 'nuxt';
 import Sound from '../components/Sound';
 export default {
   components: {
@@ -46,8 +47,8 @@ export default {
     },
     filteredSounds() {
       return this.sounds.filter((sound) => {
-        if (this.filterCategory) {
-          return sound.meta.categories.includes(this.filterCategory);
+        if (this.viewCategory) {
+          return sound.meta.categories.includes(this.viewCategory);
         }
 
         return true;
@@ -64,11 +65,9 @@ export default {
       });
 
       return Object.keys(keys).sort();
-    }
-  },
-  methods: {
-    setCategory(category) {
-      this.filterCategory = category;
+    },
+    viewCategory() {
+      return this.$route.params.category || false;
     },
   },
 }
@@ -104,6 +103,7 @@ export default {
     color: #444;
     font-size: 14px;
     font-weight: 500;
+    text-decoration: none;
     padding: 5px 10px;
     margin: 0 5px 10px;
 
