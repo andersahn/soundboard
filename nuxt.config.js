@@ -27,7 +27,7 @@ module.exports = {
       { hid: 'web-app-title', name: 'apple-mobile-web-app-title', content: appName },
       { hid: 'application-name', name: 'application-name', content: appName },
       { hid: 'ms-tilecolor', name: 'msapplication-TileColor', content: "#000000" },
-      { hid: 'msapp-config', name: 'msapplication-config', content: `${baseUrl}images/browserconfig.xml` },
+      { hid: 'msapp-config', name: 'msapplication-config', content: `${baseUrl}browserconfig.xml` },
       { hid: 'theme-color', content: "#000000" },
     ],
     link: [
