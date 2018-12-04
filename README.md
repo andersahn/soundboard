@@ -5,6 +5,13 @@ Soundboard in HTML
 
 ## Usage
 
+### Sounds & Categories
+Sounds are located in static/sounds
+For mp3 file, a corresponding meta file is located in folder:
+meta/{filename}.json - where {filename} is the same as the mp3 name.
+
+### Development & Build
+
 ```
 #Development
 yarn install
