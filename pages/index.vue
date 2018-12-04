@@ -8,7 +8,7 @@
           'categories__category--selected': (viewCategory === false),
         }"
       >
-        None
+        All
       </nuxt-link>
       <nuxt-link
         v-for="category in categories"
