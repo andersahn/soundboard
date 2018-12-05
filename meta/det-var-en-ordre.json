@@ -1,5 +1,5 @@
 {
-  "categories": [],
-  "icon": false,
-  "name": "Det Var En Ordre"
+  "categories": ["linhart"],
+  "icon": "paladin",
+  "name": "Det var en ordre"
 }
