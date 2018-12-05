@@ -22,7 +22,6 @@ fs.readdir(soundFolder, (err, files) => {
         // note that name is optional and can be removed
         meta.name = name.toLowerCase()
           .split('-')
-          .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
           .join(' ');
 
         fs.writeFile(path, JSON.stringify(meta, null, 2), { flag: 'wx' }, function (err) {
